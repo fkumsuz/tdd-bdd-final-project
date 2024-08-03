@@ -104,6 +104,7 @@ class Product(db.Model):
         logger.info("Saving %s", self.name)
         if not self.id:
             raise DataValidationError("Update called with empty ID field")
+        db.session.add(self) 
         db.session.commit()
 
     def delete(self):
